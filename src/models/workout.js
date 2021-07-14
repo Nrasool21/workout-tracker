@@ -7,12 +7,27 @@ const workoutSchema = {
   },
   exercises: [
     {
-      type: "enums",
-      name: "string",
-      duration: "numbers",
-      weight: "numbers",
-      reps: "numbers",
-      sets: "numbers",
+      type: {
+        type: String,
+        required: true,
+      },
+      name: {
+        type: String,
+        required: true,
+      },
+      duration: {
+        type: Number,
+        required: true,
+      },
+      weight: {
+        type: Number,
+      },
+      reps: {
+        type: Number,
+      },
+      sets: {
+        type: Number,
+      },
     },
   ],
 };
