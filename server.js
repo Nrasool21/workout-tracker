@@ -11,5 +11,5 @@ app.use(express.static("public"));
 app.use(routes);
 
 app.listen(PORT, () => {
-  console.log("Server running on http://localhost${DB_NAME}");
+  console.log("Server running on http://localhost${PORT}");
 });

@@ -1,14 +1,26 @@
-const DB_NAME = process.env.DB_NAME || "fitness-tracker-db";
+const mongoose = require("mongoose");
 
-const DB_URL = process.env.MONGODB_URL || `mongodb://localhost/${DB_NAME}`;
-const MONGOOSE_OPTIONS = {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
+const { DB_URL, MONGOOSE_OPTIONS } = require("./config");
+
+const connect = async() => {
+  try {
+    await mongoose.connect(DB_URL, MONGOOSE_OPTIONS);
+    console.log("Successfully connected");
+  } catch (error) {
+    throw error;
+  }
+};
+
+const disconnect = async () => {
+  try {
+    await mongoose.connection.close();
+    console.log("Successfully disconnected from mongoDB");
+  } catch (error) {
+    throw error;
+  }
 };
 
 module.exports = {
-  DB_URL,
-  MONGOOSE_OPTIONS,
+  connect,
+  disconnect,
 };
