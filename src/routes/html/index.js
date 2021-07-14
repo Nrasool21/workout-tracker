@@ -1,10 +1,15 @@
-const router = require("express").Router();
+const { Router } = require("express");
 
-const path = require("path");
-const { renderWorkouts, renderStats } = require("../../controllers/api/index");
+const {
+  renderStats,
+  renderExercise,
+  renderHome,
+} = require("../../controllers/html");
 
-router.get("/exercise", renderWorkouts);
+const router = Router();
 
 router.get("/stats", renderStats);
+router.get("/exercises", renderExercise);
+router.get("/", renderHome);
 
 module.exports = router;
