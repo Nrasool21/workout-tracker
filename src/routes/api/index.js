@@ -10,8 +10,8 @@ const {
 const router = Router();
 
 router.get("/workouts", getWorkouts);
-router.post("/workouts", createWorkouts);
 router.put("/workouts/:id", updateWorkouts);
+router.post("/workouts", createWorkouts);
 router.get("/workouts/range", getAggregatedWorkouts);
 
 module.exports = router;
