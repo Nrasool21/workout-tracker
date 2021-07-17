@@ -12,12 +12,12 @@ const getWorkouts = async (req, res) => {
   }
 };
 
-const updateWorkouts = (req, res) => {
+const updateWorkouts = async (req, res) => {
   try {
-    const { id } = req.prams;
+    const { id } = req.params;
     const exercise = req.body;
 
-    const updateWorkout = Workout.findByIdAndUpdate(
+    const updateWorkout = await Workout.findByIdAndUpdate(
       id,
       { $push: { exercises: exercise } },
       { new: true }
@@ -30,7 +30,7 @@ const updateWorkouts = (req, res) => {
 
 const createWorkouts = async (req, res) => {
   try {
-    const workout = await Workout.create();
+    const workout = await Workout.create({});
     return res.json(workout);
   } catch (error) {
     console.log(error.message);

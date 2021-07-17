@@ -1,6 +1,5 @@
 const { Router } = require("express");
 
-
 const {
   getWorkouts,
   updateWorkouts,
@@ -11,10 +10,8 @@ const {
 const router = Router();
 
 router.get("/workouts", getWorkouts);
-router.post("/workouts", updateWorkouts);
-router.put("/workouts/:id", createWorkouts);
-router.get("/workouts/range"), getAggregatedWorkouts;
+router.post("/workouts", createWorkouts);
+router.put("/workouts/:id", updateWorkouts);
+router.get("/workouts/range", getAggregatedWorkouts);
 
 module.exports = router;
-
-
