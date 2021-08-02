@@ -9,7 +9,6 @@ const PORT = process.env.PORT || 4000;
 
 const app = express();
 
-connect();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -17,6 +16,11 @@ app.use(express.static(path.join(__dirname, "./public")));
 
 app.use(routes);
 
-app.listen(PORT, () => {
+const init = async () => {
+  await connect();
+  app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
-});
+})
+}
+
+init();
